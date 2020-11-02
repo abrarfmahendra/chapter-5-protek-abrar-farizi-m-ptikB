@@ -1,0 +1,33 @@
+import random
+
+# komputer memilih angka secara acak dari 1 s.d 100
+angka = random.randint(1,101)  
+# atur agar 
+maksimum_tebakan = 7
+nomor_tebakan = 0
+tebakan_benar = False
+point = 100
+
+print('Komputer telah memilih angka secara acak dari 1 s.d 100')
+print('Tebaklah angka tersebut dengan jumlah tebakan seminimum mungkin')
+print('Anda harus dapat menebak dalam {} percobaan'.format(maksimum_tebakan))
+
+teks_petunjuk = 'Ini adalah tebakan ke-{} anda. Masukkan angka kemudian tekan ENTER '
+while not tebakan_benar and not nomor_tebakan >= maksimum_tebakan:
+  nomor_tebakan = nomor_tebakan + 1
+  tebakan = input(teks_petunjuk.format(nomor_tebakan))
+  tebakan = int(tebakan)
+  if tebakan == angka:
+    tebakan_benar = True
+    print ("point anda =",point)
+  elif tebakan > angka:
+    print('Angka yang anda masukkan terlalu besar')
+    point -= 2
+  elif tebakan < angka:
+    print('Angka yang anda masukkan terlalu kecil')
+    point -=2
+
+if tebakan_benar:
+  print('Selamat! Anda berhasil menebak angka pada kesempatan ke-{}'.format(nomor_tebakan))
+else:
+  print('Kesempatan menebak anda habis, anda kalah.')
